@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react';
+import {useState} from 'react';
 import postsData from '../posts.json';
 
 export default function Posts() {
@@ -36,10 +36,10 @@ export default function Posts() {
       <h1>Blog</h1>
 
       <ul>
-        {currentPosts.map(post => (
+        {currentPosts.map((post) => (
           <li key={post.id}>
             <Link href={`/posts/${post.id}`}>
-                <h2 className="title">{post.title}</h2>
+              <h2 className="title">{post.title}</h2>
             </Link>
             <p>{post.date}</p>
           </li>
@@ -49,11 +49,15 @@ export default function Posts() {
       {/* Пагинация */}
       <div className="pagination">
         {currentPage > 1 && (
-          <button onClick={prevPage}>Prev</button>
+          <button onClick={prevPage} className="nextPrev">
+            Prev
+          </button>
         )}
 
         {currentPage < totalPages && (
-          <button onClick={nextPage}>Next</button>
+          <button onClick={nextPage} className="nextPage">
+            Next
+          </button>
         )}
       </div>
     </div>
