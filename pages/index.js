@@ -37,7 +37,7 @@ export default function Posts() {
 
       <ul>
         {currentPosts.map((post) => (
-          <li key={post.id}>
+          <li key={post.id} className="post">
             <Link href={`/posts/${post.id}`}>
               <h2 className="title">{post.title}</h2>
             </Link>
