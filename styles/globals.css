@@ -133,3 +133,35 @@ li p {
   opacity: 0.5;
 }
 
+form {
+  margin-bottom: 2rem;
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 20px;
+}
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  border: 1px solid #ccc;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+  border: 1px solid blue;
+}

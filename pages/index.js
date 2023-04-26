@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import {useState} from 'react';
+import { useState } from 'react';
 import postsData from '../posts.json';
 
 export default function Posts() {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5); // Количество постов на странице
+  const [likes, setLikes] = useState(postsData.posts.map(() => 0)); // Количество лайков для каждого поста
 
   // Вычисление индекса последнего поста на странице
   const indexOfLastPost = currentPage * postsPerPage;
@@ -27,6 +28,13 @@ export default function Posts() {
     setCurrentPage(currentPage - 1);
   };
 
+  // Функция для обработки клика на кнопку лайка
+  const handleLikeClick = (postId) => {
+    const newLikes = [...likes];
+    newLikes[postId - 1]++;
+    setLikes(newLikes);
+  };
+
   return (
     <div>
       <Head>
@@ -36,12 +44,16 @@ export default function Posts() {
       <h1>Blog</h1>
 
       <ul>
-        {currentPosts.map((post) => (
+        {currentPosts.map((post, index) => (
           <li key={post.id} className="post">
             <Link href={`/posts/${post.id}`}>
               <h2 className="title">{post.title}</h2>
             </Link>
             <p>{post.date}</p>
+            <p>
+              Likes: {likes[post.id - 1]}{' '}
+              <button onClick={() => handleLikeClick(post.id)}>Like</button>
+            </p>
           </li>
         ))}
       </ul>
