@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react';
+import {useState} from 'react';
 import postsData from '../posts.json';
 
 export default function Posts() {
@@ -56,6 +56,15 @@ export default function Posts() {
             </p>
           </li>
         ))}
+        <li>
+          <Link href={`/captcha`}>
+            <h2 className="title">Captcha Page</h2>
+          </Link>
+          <p>1.1.1</p>
+          <p>
+            Likes: {likes[999 - 1]} <button onClick={() => handleLikeClick('999')}>Like</button>
+          </p>
+        </li>
       </ul>
 
       {/* Пагинация */}
